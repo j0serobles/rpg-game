@@ -1,0 +1,57 @@
+body, html {
+    height: 100%;
+    color: white;
+    margin: 0;
+  }
+
+body {
+    background-color: black;
+}
+
+.border-bottom {
+    border-bottom: 4px solid #dee2e6!important
+}
+
+body {
+    /* background-image: url('../images/concrete_wall_2.png');
+    display:flex;
+    flex-direction: column; */
+    height: 100%;
+    background-color:white;
+}
+
+.header {
+    background-color: black;
+}
+#heading-h1 {
+    background-color: #c61;
+    color: #fff; 
+    padding-bottom: 7px;
+    /* height: 10%; */
+}
+
+.bg-info {
+    font-size: 1.5em;
+}
+
+
+#instructions {
+    background-color: #fed;
+    color: #c61;
+    /* height: 30%; */
+
+}
+
+#score_div {
+    color: #779;
+    background-color:#2a6;
+}
+
+#score_span {
+    font-size: 2em; 
+}
+
+#stats_div {
+    color: #779;
+    background-color: #0ff;
+}

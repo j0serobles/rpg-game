@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <!-- Content Scaling -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+        <meta charset="utf-8">
+        <title></title>
+        <!-- 
+        <link rel="stylesheet" href="resets.css">
+        --> 
+        <!-- Added link to the jQuery Library -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="assets/css/style.css">
+    </head>
+
+    <body>
+        <audio id="wrong">
+            <source src="assets/media/wrong.wav" type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+        <audio id="ding">
+              <source src="assets/media/ding.wav" type="audio/wav">
+              Your browser does not support the audio element.
+        </audio>
+        <audio id="tada">
+                <source src="assets/media/tada.wav" type="audio/wav">
+                Your browser does not support the audio element.
+        </audio>
+        <audio id="lost">
+            <source src="assets/media/lost.wav" type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+
+        <div class="container h-100 align-items-center">
+
+          <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+          <![endif]-->
+
+          <div class="header">
+              <div class="row">
+                <div class="col-md-4">
+                  <img class="img-fluid float-left" src="assets/images/starwars.png" alt="Start Wars">
+                </div>
+                <div class="col-md-4 offset-md-4">
+                  <h1 class="mt-5 text-right mr-3"> R P G </h1>
+                </div>
+              </div>
+          </div>
+
+          <div id="characters" class="row">
+            
+              <div  class="col-md-12 mx-0">
+
+                <div class="row">
+                  <div class="col-md-4">
+                    <p id="choosePrompt" class="text-dark mb-0">Choose a Character :  </p>
+                  </div>
+                </div>
+                
+
+                 <div class="row">
+                   <div class="col-md-12">
+                     <div id="characters_list" class="d-flex">
+                       <!-- These are added dynamically via jQuery.append() -->
+                       <!-- <div id="img_frame" class="text-center border border-dark mx-3">
+                          <img src="assets/images/vader.jpg" alt="Characters"> 
+                          <p class="health_points text-dark m-0">150</p>
+                       </div> -->
+                     </div>
+                   </div>
+                 </div>
+              </div>
+
+                
+          </div>
+
+          <div id="gameArea" class="row justify-content-center">
+
+            <div id="player" class="col-md-5">
+                <div class="row">
+                    <div class="col-md-12">
+                      <p class="bg-info mb-0">Your Player:  </p>
+                    </div>
+                  </div>
+                  <div id="currentPlayer" class="img_frame text-center border border-dark mx-3">
+                      <img src="assets/images/vader.jpg" alt="Characters"> 
+                      <p class="health_points text-dark">150</p>
+                   </div>
+
+            </div>
+
+            <div id="gameControls" class="col-md-2">
+
+                <button type="button" class="btn btn-primary">Attack!</button>
+
+            </div>
+            <div id="opponent" class="col-md-5">
+                <div class="row">
+                    <div class="col-md-12">
+                      <p class="bg-info mb-0">Defender:   </p>
+                    </div>
+                  </div>
+                  <div id="currentOpponent" class="img_frame text-center border border-dark mx-3">
+                      <img src="assets/images/vader.jpg" alt="Characters"> 
+                      <p class="health_points text-dark">150</p>
+                   </div>
+
+            </div>
+          </div>
+
+          <div id="deadCharacters" class="row">
+            
+              <div class="col-md-12">
+                  <div class="d-flex">
+
+                      <div id="img_frame" class="text-center border border-dark mx-3">
+                          <img src="assets/images/vader.jpg" alt="Characters"> 
+                          <p class="health_points text-dark">150</p>
+                       </div>
+                       <div id="img_frame" class="text-center border border-dark mx-3">
+                          <img src="assets/images/vader.jpg" alt="Characters"> 
+                          <p class="health_points text-dark">150</p>
+                       </div>
+
+                       <div id="img_frame" class="text-center border border-dark mx-3">
+                          <img src="assets/images/vader.jpg" alt="Characters"> 
+                          <p class="health_points text-dark">150</p>
+                       </div>
+
+                       
+                     </div>
+                </div>
+          </div>
+
+              
+       </div> //container
+
+        <script src="assets/javascript/characters.js"></script>
+        <script src="assets/javascript/game.js"></script>
+        <script src="" async defer></script>
+
+      </body>
+</html>
