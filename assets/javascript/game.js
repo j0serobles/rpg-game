@@ -22,23 +22,24 @@
 
    this.updatePage = function() {
 
-    $("#score_span").text(currentGame.randomNumber);
-    $("#wins_div").text("Wins : "     + currentGame.wins); 
-    $("#losses_div").text("Losses : " + currentGame.losses); 
-    $("#user_score").text(currentGame.userScore);
+    // $("#score_span").text(currentGame.randomNumber);
+    // $("#wins_div").text("Wins : "     + currentGame.wins); 
+    // $("#losses_div").text("Losses : " + currentGame.losses); 
+    // $("#user_score").text(currentGame.userScore);
 
-    if (currentGame.gameState === "notStarted") {
-      //Show all characters in characters[] array:
-      for (var i = 0; i < characters.length; i++) {
-    //Add  the img_frame element, like this:
-    //  <div id="img_frame" class="text-center border border-dark mx-3">
-    //     <img src="assets/images/vader.jpg" alt="Characters"> 
-    //     <p class="health_points text-dark m-0">150</p>
-    //  </div>
-    $("#characters_list").append('<div id="img_frame" class="text-center border border-dark mx-3">' +
-                                 '<img src="assets/images/vader.jpg" alt="Characters">'             + 
-                                 '<p class="health_points text-dark m-0">150</p></div>')
-      }
+    if (currentGame.gameState === "started") {
+      //Refresh the elements in the gameArea:
+        $("#currentPlayer").html('<div id="currentPlayer" class="img_frame text-center border border-dark mx-3">' +
+                                 '<img src="' + currentGame.player.imageFile + '"alt="' +
+                                 currentGame.player.name + '"><p class="health_points text-dark">' + 
+                                 currentGame.player.hp + '</p></div>');
+
+        $("#currentOpponent").html('<div id="currentOpponent" class="img_frame text-center border border-dark mx-3">' +
+        '<img src="' + currentGame.opponent.imageFile + '"alt="' +
+        currentGame.opponent.name + '"><p class="health_points text-dark">'  + 
+        currentGame.opponent.hp + '</p></div>');
+
+        $("#characters").fadeOut("slow"); 
     }
     
     if (currentGame.gameState == "ended") {
@@ -182,7 +183,7 @@ $( document ).ready(function() {
       else {
         console.log("Current game:" + currentGame);
         console.log("userInterface:" + userInterface); 
-        console.log("did not set player nor opponent" + currentGame.gameState + " " + currentGame.player); 
+        console.log("did not set player nor opponent :" + currentGame.gameState + " " + currentGame.player); 
       }
 
     }); 
