@@ -24,8 +24,8 @@
     </head>
 
     <body>
-        <audio id="wrong">
-            <source src="assets/media/wrong.wav" type="audio/wav">
+        <audio id="blaster">
+            <source src="assets/media/blaster-firing.mp3" type="audio/wav">
             Your browser does not support the audio element.
         </audio>
         <audio id="ding">
@@ -90,7 +90,7 @@
             <div id="player" class="col-md-5">
                 <div class="row">
                     <div class="col-md-12">
-                      <p class="bg-info mb-0">Your Player:  </p>
+                      <p class="text-dark mb-0">Your Player:  </p>
                     </div>
                   </div>
                   <div id="currentPlayer" class="img_frame text-center border border-dark mx-3">
@@ -102,19 +102,18 @@
 
             <div id="gameControls" class="col-md-2">
 
-                <button type="button" class="btn btn-primary">Attack!</button>
+                <button id="attackButton" type="button" class="btn btn-primary">Attack!</button>
 
             </div>
             <div id="opponent" class="col-md-5">
                 <div class="row">
                     <div class="col-md-12">
-                      <p class="bg-info mb-0">Defender:   </p>
+                      <p class="text-dark mb-0">Defender:   </p>
                     </div>
                   </div>
-                  <div id="currentOpponent" class="img_frame text-center border border-dark mx-3">
-                      <img src="assets/images/vader.jpg" alt="Characters"> 
-                      <p class="health_points text-dark">150</p>
-                   </div>
+                  <!-- div will be set dynamically -->
+                  < <div id="currentOpponent" class="img_frame text-center border border-dark mx-3">
+                   </div> -->
 
             </div>
           </div>

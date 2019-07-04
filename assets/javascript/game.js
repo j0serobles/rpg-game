@@ -2,6 +2,9 @@
 
  function UI() {
 
+  this.blaster           = document.getElementById("blaster"); 
+  
+
   
   if (currentGame.gameState === "notStarted") {
     //Show all characters in characters[] array:
@@ -14,10 +17,13 @@
     $("#characters_list").append('<div class="img_frame text-center border border-dark mx-3">' +
                                  '<img src="' + characters[i].imageFile + '" alt="' + characters[i].name + '">' +
                                  '<p class="char_name text-dark -m0">' + 
-                                 characters[i].name + '</p>' + 
-                               '<p class="health_points text-dark m-0">150</p></div>')
+                                  characters[i].name + '</p>' + 
+                                 '<p class="health_points text-dark m-0">150</p></div>')
     }
+
+    $( "#attackButton" ).hide();
   }
+
 
 
    this.updatePage = function() {
@@ -27,21 +33,30 @@
     // $("#losses_div").text("Losses : " + currentGame.losses); 
     // $("#user_score").text(currentGame.userScore);
 
-    if (currentGame.gameState === "started") {
+
       //Refresh the elements in the gameArea:
+      if (currentGame.player !== null) {
         $("#currentPlayer").html('<div id="currentPlayer" class="img_frame text-center border border-dark mx-3">' +
-                                 '<img src="' + currentGame.player.imageFile + '"alt="' +
-                                 currentGame.player.name + '"><p class="health_points text-dark">' + 
-                                 currentGame.player.hp + '</p></div>');
+                                  '<img src="' + currentGame.player.imageFile + '"alt="' +
+                                   currentGame.player.name + '"><p class="health_points text-dark">' + 
+                                   currentGame.player.hp + '</p></div>');
+      $("#gameArea").show();
+      }
 
-        $("#currentOpponent").html('<div id="currentOpponent" class="img_frame text-center border border-dark mx-3">' +
-        '<img src="' + currentGame.opponent.imageFile + '"alt="' +
-        currentGame.opponent.name + '"><p class="health_points text-dark">'  + 
-        currentGame.opponent.hp + '</p></div>');
+      if (currentGame.opponent !== null) {
 
-        $("#characters").fadeOut("slow"); 
-    }
-    
+          $("#currentOpponent").html('<div id="currentOpponent" class="img_frame text-center border border-dark mx-3">' +
+          '<img src="' + currentGame.opponent.imageFile + '"alt="' +
+          currentGame.opponent.name + '"><p class="health_points text-dark">'  + 
+          currentGame.opponent.hp + '</p></div>');
+
+          $( "#characters" ).fadeOut("slow");
+          
+          $( "#attackButton" ).show();
+
+      }
+
+       
     if (currentGame.gameState == "ended") {
 
       $("#message_div").show(); 
@@ -115,7 +130,8 @@ function Game() {
   /////////////////////////////////////////////////////////////////////////////
   this.attack = function() {
 
-  
+    userInterface.blaster.play(); 
+
     this.player.baseAttackPower = (this.player.baseAttackPower * this.attackCount);
     this.attackCount++;
     this.opponent.hp -= this.player.baseAttackPower;
@@ -126,11 +142,15 @@ function Game() {
 
       //Player is dead.  End game
       this.gameState = "ended";
+      this.player.hp = 0;
+      alert( this.player.name + " looses!");
     }
 
-    if (opponent.hp <= 0) {
+    if (this.opponent.hp <= 0) {
       //Opponent is dead.  End Game
       this.gameState = "ended";
+      this.opponent.hp = 0;
+      alert( this.opponent.name + " looses!");
     }
 
     userInterface.updatePage(); 
@@ -171,13 +191,14 @@ $( document ).ready(function() {
       console.log("Current game:" + currentGame);
       console.log("userInterface:" + userInterface); 
     
-      if ((currentGame.gameState === "notStarted") && (currentGame.player === null)) {
-        console.log("about to set player"); 
-        
+      if (currentGame.player === null) {
         currentGame.setPlayer ( $(this).index() );
+        $( "#choosePrompt" ).text("Choose an oponent: "); 
+        userInterface.updatePage();
       }
-      else if ((currentGame.gameState === "notStarted" ) && (currentGame.opponent === null)) {
+      else if (currentGame.opponent === null) {
         currentGame.setOpponent( $(this).index() ); 
+        userInterface.updatePage();
         currentGame.initGame(); 
       }
       else {
